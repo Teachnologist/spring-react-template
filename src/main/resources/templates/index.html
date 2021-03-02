@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>MVC VUE TEMPLATE</title>
+
+    </head>
+<body>
+<h4>Welcome to Thymeleaf Spring Boot web application with VUE.JS</h4>
+
+<div id="app">
+    <h1>{{ message }}</h1>
+</div>
+
+<ul id="multi" v-if={items}>
+    <li v-for="item in items">
+        {{ item }}
+    </li>
+</ul>
+
+<p v-else={items}>Items not loaded</p>
+</body>
+<script
+        src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js">
+</script>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js">
+</script>
+<script th:src="@{js/message.js}"></script>
+<script th:src="@{js/loop.js}"></script>
+
+
+</html>
