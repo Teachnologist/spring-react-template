@@ -1,13 +1,10 @@
-var myObject = new Vue({
+new Vue({
     name: "App",
     el: '#app',
     data() {
         return {
             message: "default message"
         }
-    },
-    beforeMount() {
-        this.getData();
     },
     methods: {
         async getData() {

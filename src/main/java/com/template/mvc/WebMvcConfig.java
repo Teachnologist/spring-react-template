@@ -13,6 +13,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/jsx/**").addResourceLocations("classpath:/static/jsx/");
         registry.addResourceHandler("/js/**").addResourceLocations("classpath:/static/js/");
+        registry.addResourceHandler("/fragments/**").addResourceLocations("classpath:/static/fragments/");
         super.addResourceHandlers(registry);
     }
 }

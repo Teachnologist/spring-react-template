@@ -1,33 +1,84 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <title>MVC VUE TEMPLATE</title>
 
+    <script
+            src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js">
+    </script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js">
+    </script>
+
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
     </head>
 <body>
+<header th:replace="fragments/nav.html :: navigate"> </header>
+
+<main class="mdc-top-app-bar--fixed-adjust">
 <h4>Welcome to Thymeleaf Spring Boot web application with VUE.JS</h4>
 
 <div id="app">
+    <button v-on:click="getData()" class="mdc-button mdc-button--raised">
+        <span class="mdc-button__ripple"></span>
+        <i class="material-icons mdc-button__icon" aria-hidden="true"
+        >bookmark</i
+        >
+        <span class="mdc-button__label">Call Web API</span>
+    </button>
+
+
     <h1>{{ message }}</h1>
 </div>
 
-<ul id="multi" v-if={items}>
-    <li v-for="item in items">
-        {{ item }}
-    </li>
-</ul>
 
-<p v-else={items}>Items not loaded</p>
+    <div id="sse" class="mdc-touch-target-wrapper">
+        <button v-on:click="startStream()" class="mdc-button mdc-button--raised">
+            <span class="mdc-button__ripple"></span>
+            <i class="material-icons mdc-button__icon" aria-hidden="true"
+            >bookmark</i
+            >
+            <span class="mdc-button__label">Start Server Sent Events</span>
+        </button>
+
+
+        <button v-on:click="stopStream()" class="mdc-button mdc-button--raised">
+            <span class="mdc-button__ripple"></span>
+            <i class="material-icons mdc-button__icon" aria-hidden="true"
+            >bookmark</i
+            >
+            <span class="mdc-button__label">Stop Server Sent Events</span>
+        </button>
+
+
+        <h1>{{ text }}</h1>
+    </div>
+
+<div id="clickbody" class="mdc-touch-target-wrapper">
+        <button v-on:click="getData()" class="mdc-button mdc-button--raised">
+            <span class="mdc-button__ripple"></span>
+            <i class="material-icons mdc-button__icon" aria-hidden="true"
+            >bookmark</i
+            >
+            <span class="mdc-button__label">Run Loop</span>
+        </button>
+    <ul v-if={items}>
+        <li v-for="item in items">
+            {{ item }}
+        </li>
+    </ul>
+</div>
+</main>
 </body>
-<script
-        src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js">
-</script>
-<script
-        src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js">
-</script>
+
 <script th:src="@{js/message.js}"></script>
-<script th:src="@{js/loop.js}"></script>
+<script th:src="@{js/clicked.js}"></script>
+<script th:src="@{js/ssevents.js}"></script>
 
 
 </html>
